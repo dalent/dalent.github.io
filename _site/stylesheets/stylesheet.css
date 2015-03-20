@@ -17,7 +17,7 @@ body {
 }
 .container1 {
   width: 90%;
-  margin: 0 10px;
+  margin: 0 auto;
 }
 
 section {
@@ -26,6 +26,7 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  text-align: center
   margin: 0 0 20px;
 }
 
@@ -46,7 +47,15 @@ header {
   padding: 20px 0;
   margin: 0 0 40px 0;
 }
-
+div pre{
+  text-align: center;
+}
+div p{
+  text-align: center;
+}
+div h2{
+  text-align: center;
+}
 header h1 {
   text-align: center;
   font-size: 30px;

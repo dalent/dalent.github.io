@@ -19,23 +19,26 @@ title: openvpn的安装
 <pre><code>git clone git@github.com:OpenVPN/easy-rsa.git</code></pre>
 <pre><code> 创建根证书</code></pre>
 <pre><code> cd easyrsa/easyrsa3</code></pre>
-<pre><code> mv vars.example vars  并且修改一下里面的关于公司名的信息</code></pre>
+<pre><code> mv vars.example vars  #并且修改一下里面的关于公司名的信息</code></pre>
 <pre><code> ./easyrsa init-pki</code></pre>
-<pre><code> ./easyrsa build-ca 并且输入密码（找个要记住） 和common名字</code></pre>
-<pre><code> ./easyrsa gen-req server nopass common名字不要和上面的相同</code></pre>
-<pre><code> ./easyrsa sign server server 签约证书也就是把证书放到issued下面</code></pre>
-<pre><code> ./easyrsa gen-dh 创建dh文件</code></pre>
+<pre><code> ./easyrsa build-ca #并且输入密码和common名字（这两个要记住） </code></pre>
+
+<pre><code> 下面创建服务器的证书</code></pre>
+<pre><code> ./easyrsa gen-req server nopass #common名字不要和上面的相同</code></pre>
+<pre><code> ./easyrsa sign server server #签约证书也就是把证书放到issued下面</code></pre>
+<pre><code> ./easyrsa gen-dh #创建dh文件</code></pre>
 <pre><code> 下面创建客户端的证书</code></pre>
 <pre><code> cd && mkdir client</code></pre>
 <pre><code> cp easy-rsa/easyrsa3 client/</code></pre>
 <pre><code>cd client/easyrsa3/ && ./easyrsa3 init-pki </code></pre>
-<pre><code>./easyrsa gen-req client  创建client req</code></pre>
-<pre><code> cd ~/easyrsa/easyrsa3  准备导入client到根证书里面</code></pre>
-<pre><code> ./easyrsa3 import-req /root/client/easyrsa3/pki/reqs/client.req client  导入因为server和根证书在一起生成的所以不需要，如果分开生成和client一样也需要倒入</code></pre>
+<pre><code>./easyrsa gen-req client  #创建client req</code></pre>
+<pre><code> cd ~/easyrsa/easyrsa3  #准备导入client到根证书里面</code></pre>
+<pre><code> ./easyrsa3 import-req /root/client/easyrsa3/pki/reqs/client.req client  #导入因为server和根证书在一起生成的所以不需要，如果分开生成和client一样也需要倒入</code></pre>
 <pre><code> ./easyrsa sign client client</code></pre>
 <pre><code> ./easyrsa sign server server</code></pre>
 <p>然后就可以修改配置文件和吧需要的证书copy过去了</p>
-<p>最后可以写一个nat代码了</p>
+<p>最后可以写一个nat代码了,别忘了提前开启ip forward功能</p>
+<pre><code>echo 1 >  /proc/sys/net/ipv4/ip_forward</code></pre>
 <pre><code>iptables -t nat -I POSTROUTING -s 10.8.0.0/255.255.255.0 -o eth0 -j MASQUERADE</code></pre>
 
 <p>....</p>

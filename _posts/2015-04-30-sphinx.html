@@ -4,22 +4,22 @@ title:安装sphinx
 ---
 <p>公司准备用全文检索的功能，但是mongoDB不支持全文检索功能，所以只能搜索下，看到sphinx是比较新的，用C++写的，网上评论不错，就准备用一下试试</p>
 <pre><code> wget http://sphinxsearch.com/files/sphinx-2.2.9-release.tar.gz</code></pre>
-<p><code>tar -xf sphinx-2.2.9-release.tar.gz</code></p>
-<p><code>cd sphinx-2.2.9-release</code></p>
-<p><code>./configure  ac_cv_c_bigendian=no --prefix=/usr/local/sphinx</code></p>
-<p><code>sudo apt-get install mysql-server libmysql++-dev  </code></p>
-<p><code>sudo make install</code></p>
-<p><code>cd /usr/local/sphinx/etc</code></p>
+<pre><code>tar -xf sphinx-2.2.9-release.tar.gz</code></pre>
+<pre><code>cd sphinx-2.2.9-release</code></pre>
+<pre><code>./configure  ac_cv_c_bigendian=no --prefix=/usr/local/sphinx</code></pre>
+<pre><code>sudo apt-get install mysql-server libmysql++-dev  </code></pre>
+<pre><code>sudo make install</code></pre>
+<pre><code>cd /usr/local/sphinx/etc</code></pre>
 <p><code>创建test账号，并且赋予权限</code></p>
-<p><code>mysql -uroot</code></p>
-<p><code>create user 'test'@'localhost'</code></p>
-<p><code>create database test</code></p>
-<p><code>grant all on test.* to 'test'@'localhost'</code></p>
-<p><code>cat   /usr/local/sphinx/etc/example.sql|mysql -u test</code></p>
-<p><code>cd /usr/local/sphinx/etc</code></p>
-<p><code>cp sphinx.conf.dist sphinx.conf</code></p>
-<p><code>/usr/local/sphinx/bin/indexer --all</code></p>
-<p><code>/usr/local/sphinx/bin/searchd</code></p>
+<pre><code>mysql -uroot</code></pre>
+<pre><code>create user 'test'@'localhost'</code></pre>
+<pre><code>create database test</code></pre>
+<pre><code>grant all on test.* to 'test'@'localhost'</code></pre>
+<pre><code>cat   /usr/local/sphinx/etc/example.sql|mysql -u test</code></pre>
+<pre><code>cd /usr/local/sphinx/etc</code></pre>
+<pre><code>cp sphinx.conf.dist sphinx.conf</code></pre>
+<pre><code>/usr/local/sphinx/bin/indexer --all</code></pre>
+<pre><code>/usr/local/sphinx/bin/searchd</code></pre>
 <p>
  mysql -h0 -P9306
 

@@ -22,35 +22,33 @@ title: 安装sphinx
 <pre><code>/usr/local/sphinx/bin/indexer --all</code></pre>
 <pre><code>/usr/local/sphinx/bin/searchd</code></pre>
 <p>
- mysql -h0 -P9306
+ mysql -h0 -P9306<br>
 
- SELECT * FROM test1 WHERE MATCH('my document');
+ SELECT * FROM test1 WHERE MATCH('my document');<br>
 
- INSERT INTO rt VALUES (1, 'this is', 'a sample text', 11);
+ INSERT INTO rt VALUES (1, 'this is', 'a sample text', 11);<br>
 
- INSERT INTO rt VALUES (2, 'some more', 'text here', 22);
+ INSERT INTO rt VALUES (2, 'some more', 'text here', 22);<br>
 
- SELECT gid/11 FROM rt WHERE MATCH('text') GROUP BY gid;
+ SELECT gid/11 FROM rt WHERE MATCH('text') GROUP BY gid;<br>
 
- SELECT * FROM rt ORDER BY gid DESC;
+ SELECT * FROM rt ORDER BY gid DESC;<br>
 
- SHOW TABLES;
+ SHOW TABLES;<br>
 
- SELECT *, WEIGHT() FROM test1 WHERE MATCH('"document one"/1');SHOW META;
+ SELECT *, WEIGHT() FROM test1 WHERE MATCH('"document one"/1');SHOW META;<br>
 
- SET profiling=1;SELECT * FROM test1 WHERE id IN (1,2,4);SHOW PROFILE;
+ SET profiling=1;SELECT * FROM test1 WHERE id IN (1,2,4);SHOW PROFILE;<br>
 
- SELECT id, id%3 idd FROM test1 WHERE MATCH('this is | nothing') GROUP BY idd;SHOW PROFILE;
+ SELECT id, id%3 idd FROM test1 WHERE MATCH('this is | nothing') GROUP BY idd;SHOW PROFILE;<br>
 
- SELECT id FROM test1 WHERE MATCH('is this a good plan?');SHOW PLAN;
+ SELECT id FROM test1 WHERE MATCH('is this a good plan?');SHOW PLAN;<br>
 
- SELECT COUNT(*) c, id%3 idd FROM test1 GROUP BY idd HAVING COUNT(*)>1;
+ SELECT COUNT(*) c, id%3 idd FROM test1 GROUP BY idd HAVING COUNT(*)>1;<br>
 
- SELECT COUNT(*) FROM test1;
-
- CALL KEYWORDS ('one two three', 'test1');
-
- CALL KEYWORDS ('one two three', 'test1', 1);\n
+ SELECT COUNT(*) FROM test1;<br>
+ CALL KEYWORDS ('one two three', 'test1');<br>
+ CALL KEYWORDS ('one two three', 'test1', 1);<br>
 </p>
 
 <p>....</p>

@@ -22,6 +22,10 @@ body {
 p img{
     width: 50%;
 }
+.inner {
+      width: 800px;
+      margin: 0 auto;
+}
 
 section {
   display: block;
@@ -50,6 +54,7 @@ header {
   padding: 20px 0;
   margin: 0 0 40px 0;
 }
+/*
 div pre{
   text-align: center;
 }
@@ -59,6 +64,7 @@ div p{
 div h2{
   text-align: center;
 }
+    */
 header h1 {
   text-align: center;
   font-size: 30px;

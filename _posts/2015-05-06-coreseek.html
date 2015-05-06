@@ -1,0 +1,39 @@
+---
+layout: topic 
+title: 安装Coreseek
+---
+
+<div class="inner">
+<p>默认sphinx是不支持中文分词的，Coreseek时一个比较好的中文分词的库,所以我们安装他提前安装需要的插件</p>
+<pre><code>wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz </code></pre>
+<pre><code>tar -xf autoconf-2.69.tar.xz </code></pre>
+<pre><code>cd  autoconf-2.69 </code></pre>
+<pre><code> ./configure </code></pre>
+<pre><code> make && make install </code></pre>
+<pre><code>apt-get install libexpat1 libexpat1-dev </code></pre>
+<pre><code>apt-get install automake </code></pre>
+<pre><code>apt-get install libtool </code></pre>
+
+<pre><code> wget http://www.coreseek.cn/uploads/csft/3.2/coreseek-3.2.14.tar.gz</code></pre>
+<pre><code>tar -xf  coreseek-3.2.14.tar.gz</code></pre>
+<pre><code>cd mmseg-3.2.14</code></pre>
+<pre><code>./bootstrap </code></pre>
+<pre><code>./configure --prefix=/usr/local/mmseg3</code></pre>
+<pre><code>make && make install</code></pre>
+
+<pre><code>cd  csft-3.2.14</code></pre>
+<p><code>sh buildconf.sh</code></p>
+<pre><code>./configure --prefix=/usr/local/coreseek  --without-unixodbc --with-mmseg --with-mmseg-includes=/usr/local/mmseg3/include/mmseg/ --with-mmseg-libs=/usr/local/mmseg3/lib/ --with-mysql</code></pre>
+<pre><code>make && make install</code></pre>
+<p> 然后就可以测试了</p>
+<pre><code>cd testpack</code></pre>
+<pre><code>cat var/test/test.xml  #此时应该正确显示中文</code></pre>
+<pre><code>/usr/local/mmseg3/bin/mmseg -d /usr/local/mmseg3/etc var/test/test.xml</code></pre>
+<pre><code>/usr/local/coreseek/bin/indexer -c etc/csft.conf --all</code></pre>
+<pre><code>/usr/local/coreseek/bin/search -c etc/csft.conf 网络搜索</code></pre>
+此时正确的应该返回 <br>
+words:<br>
+1. '网络': 1 documents, 1 hits<br>
+2. '搜索': 2 documents, 5 hits<br>
+</div>
+

@@ -4,24 +4,30 @@ title: 安装Coreseek
 ---
 
 <div class="inner">
-<p>默认sphinx是不支持中文分词的，Coreseek是一个比较好的中文分词的库,所以用sphinx ＋ coreseek是一个比较好的选择，因为上篇我们已经写了sphinx的安装，这次安装coreseek，首先安装需要的依赖</p>
+<p>默认sphinx是不支持中文分词的，Coreseek是一个基于sphinx的支持中文的版本，它内部用了mmseg分词，因为上篇我们已经写了sphinx的安装（如果只需要英文的话，用这个版本），这次安装coreseek（就不需要安装原版的sphinx了），首先安装需要的依赖</p>
 <pre><code>wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz </code></pre>
 <pre><code>tar -xf autoconf-2.69.tar.xz </code></pre>
 <pre><code>cd  autoconf-2.69 </code></pre>
 <pre><code> ./configure </code></pre>
 <pre><code> make && make install </code></pre>
+<pre><code>http://ftp.gnu.org/gnu/automake/automake-1.9.6.tar.gz </code></pre>
+<pre><code>tar -xf automake-1.9.6.tar.gz </code></pre>
+<pre><code>cd  automake-1.9.6 </code></pre>
+<pre><code> ./configure </code></pre>
+<pre><code> make && make install </code></pre>
+
 <pre><code>apt-get install libexpat1 libexpat1-dev </code></pre>
 <pre><code>apt-get install automake </code></pre>
 <pre><code>apt-get install libtool </code></pre>
-<p>安装coreseek</p>
-<pre><code> wget http://www.coreseek.cn/uploads/csft/3.2/coreseek-3.2.14.tar.gz</code></pre>
-<pre><code>tar -xf  coreseek-3.2.14.tar.gz</code></pre>
+<p>安装coreseek 我们这里安装4.1-beta版本这个版本支持sql语法和rt（real time）类型的搜索，这样我们不用api可以客户端直接调用sql的driver就可以操作了</p>
+<pre><code> wget http://219.232.239.243/uploads/csft/4.0/coreseek-4.1-beta.tar.gz</code></pre>
+<pre><code>tar -xf coreseek-4.1-beta.tar.gz </code></pre>
 <pre><code>cd mmseg-3.2.14</code></pre>
 <pre><code>./bootstrap </code></pre>
 <pre><code>./configure --prefix=/usr/local/mmseg3</code></pre>
 <pre><code>make && make install</code></pre>
 
-<pre><code>cd  csft-3.2.14</code></pre>
+<pre><code>cd  csft-4.1</code></pre>
 <pre><code>./buildconf.sh</code></pre>
 <pre><code>./configure --prefix=/usr/local/coreseek  --without-unixodbc --with-mmseg --with-mmseg-includes=/usr/local/mmseg3/include/mmseg/ --with-mmseg-libs=/usr/local/mmseg3/lib/ --with-mysql</code></pre>
 <pre><code>make && make install</code></pre>

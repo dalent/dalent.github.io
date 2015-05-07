@@ -4,7 +4,7 @@ title: 安装Coreseek
 ---
 
 <div class="inner">
-<p>默认sphinx是不支持中文分词的，Coreseek是一个比较好的中文分词的库,所以用sphinx ＋ coreseek是一个比较好的选择，因为上篇我们已经写了spinx的安装，这次安装coreseek，首先安装需要的依赖</p>
+<p>默认sphinx是不支持中文分词的，Coreseek是一个比较好的中文分词的库,所以用sphinx ＋ coreseek是一个比较好的选择，因为上篇我们已经写了sphinx的安装，这次安装coreseek，首先安装需要的依赖</p>
 <pre><code>wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz </code></pre>
 <pre><code>tar -xf autoconf-2.69.tar.xz </code></pre>
 <pre><code>cd  autoconf-2.69 </code></pre>
@@ -22,7 +22,7 @@ title: 安装Coreseek
 <pre><code>make && make install</code></pre>
 
 <pre><code>cd  csft-3.2.14</code></pre>
-<p><code>sh buildconf.sh</code></p>
+<pre><code>./buildconf.sh</code></pre>
 <pre><code>./configure --prefix=/usr/local/coreseek  --without-unixodbc --with-mmseg --with-mmseg-includes=/usr/local/mmseg3/include/mmseg/ --with-mmseg-libs=/usr/local/mmseg3/lib/ --with-mysql</code></pre>
 <pre><code>make && make install</code></pre>
 <p> 然后就可以测试了</p>

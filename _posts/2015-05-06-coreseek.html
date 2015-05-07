@@ -4,7 +4,7 @@ title: 安装Coreseek
 ---
 
 <div class="inner">
-<p>默认sphinx是不支持中文分词的，Coreseek时一个比较好的中文分词的库,所以我们安装他提前安装需要的插件</p>
+<p>默认sphinx是不支持中文分词的，Coreseek是一个比较好的中文分词的库,所以用sphinx ＋ coreseek是一个比较好的选择，因为上篇我们已经写了spinx的安装，这次安装coreseek，首先安装需要的依赖</p>
 <pre><code>wget http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz </code></pre>
 <pre><code>tar -xf autoconf-2.69.tar.xz </code></pre>
 <pre><code>cd  autoconf-2.69 </code></pre>
@@ -13,7 +13,7 @@ title: 安装Coreseek
 <pre><code>apt-get install libexpat1 libexpat1-dev </code></pre>
 <pre><code>apt-get install automake </code></pre>
 <pre><code>apt-get install libtool </code></pre>
-
+<p>安装coreseek</p>
 <pre><code> wget http://www.coreseek.cn/uploads/csft/3.2/coreseek-3.2.14.tar.gz</code></pre>
 <pre><code>tar -xf  coreseek-3.2.14.tar.gz</code></pre>
 <pre><code>cd mmseg-3.2.14</code></pre>

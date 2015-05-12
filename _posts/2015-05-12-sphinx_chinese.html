@@ -1,0 +1,25 @@
+---
+layout: topic 
+title: 安装Coreseek
+---
+
+<div class="inner">
+<p>今天仔细研究了一下sphinx，看了一下文档，sphinx是支持中文的，只不过分词很简陋，只能达到sql like或者mongo regex的，例如网络搜索，其实可以有两个关键词网络和搜索，coreseek可以分出关键词，但是原生的sphinx是不能的，不过看用途，不需要这么准确的话，sphinx也是可以的</p>
+<p> 按照之前的文档，安装最新的sphinx</p>
+<pre><code>修改sphinx的conf文件为</code></pre>
+<a href="/downloads/sphinx.conf" download>sphinx.conf 下载</a>
+<p> 按照mysql一样登录</p>
+<pre><code> mysql -h0 -P9306 -uroot</code></pre>
+<pre><code> insert into rt values(8,'中国','中国人',236);</code></pre>
+<pre><code> select *from rt where match('中国');</code></pre>
+<p> 
++------+------+<br>
+| id   | gid  |<br>
++------+------+<br>
+|    8 |  236 |<br>
++------+------+<br>
+</p>
+<p>如果我们如下面那样搜索就搜索不到了</p>
+<pre><code> select *from rt where match('中国的');</code></pre>
+</div>
+

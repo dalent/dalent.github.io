@@ -1,0 +1,29 @@
+---
+layout: topic 
+title: 安装配置zabbix
+---
+
+<div class="inner">
+<p>服务器也有九台了，感觉总是怕怕的，害怕某台机器突然挂了，活着某个服务突然悲剧，所以决定安装一个监控，来监控服务器的状态，看了下zabbix是比较靠谱的一个所以决定安装之</p>
+<p> 其实官方文档有详细的介绍，这里基本上列出所用到的命令,这里只介绍从源码安装了</p>
+<pre><code>wget http://repo.zabbix.com/zabbix/2.4/ubuntu/pool/main/z/zabbix/zabbix_2.4.5.orig.tar.gz</code></pre>
+<pre><code>tar -xf zabbix_2.4.5.orig.tar.gz</code></pre>
+<pre><code>cd zabbix_2.4.5</code></pre>
+<pre><code>./configure --enable-server --enable-agent --with-mysql  --with-net-snmp --with-libcurl --with-libxml2</code></pre>
+<pre><code>make</code></pre>
+<pre><code>make install</code></pre>
+<p>如果缺少依赖，请安装之</p>
+<p>会在/usr/local/sbin下面声称 zabbix_server zabbix_agentd zabbix_agent ,/usr/loca/etc下面声称对应的配置文件</p>
+<p>安装apache2</p>
+<p>把zabbix_2.4.5下面的frontends的php 复制到对应apache的www目录下面，ubuntu在/var/www/html</p>
+<pre>创建zabbix用户</pre>
+<pre><code>groupadd zabbix</code></pre>
+<pre><code>useradd -g zabbix zabbix -b /home</code></pre>
+<p>创建mysql database mysql -u root</p>
+<pre><code>create database zabbix</code></pre>
+<p> 可以修改配置文件，指定dbUser 为 root，活着创建 zabbix用户，并把对zabbix数据库的权限赋予给他</p>
+<p> 就可以启动zabbix_server啦</p>
+<p> 然后在浏览器输入地址， 端口按照提示的要求设置</p>
+<p>最后一步就是安装agentd，在需要监控的地方，安装agentd，注意配置hostName，同时在浏览器configuration下面新加同样名字的host和ip活着dns</p>
+</div>
+

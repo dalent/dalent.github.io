@@ -18,7 +18,7 @@ title: openvpn的安装
 <p>先下载</p>
 <pre><code>git clone git@github.com:OpenVPN/easy-rsa.git</code></pre>
 <p> 创建根证书</p>
-<pre><code> cd easyrsa/easyrsa3</code></pre>
+<pre><code> cd easy-rsa/easyrsa3</code></pre>
 <pre><code> mv vars.example vars  #并且修改一下里面的关于公司名的信息</code></pre>
 <pre><code> ./easyrsa init-pki</code></pre>
 <pre><code> ./easyrsa build-ca #并且输入密码和common名字（这两个要记住） </code></pre>
@@ -34,7 +34,7 @@ title: openvpn的安装
 <pre><code> cp easy-rsa/easyrsa3 client/</code></pre>
 <pre><code>cd client/easyrsa3/ && ./easyrsa3 init-pki </code></pre>
 <pre><code>./easyrsa gen-req client  #创建client req</code></pre>
-<pre><code> cd ~/easyrsa/easyrsa3  #准备导入client到根证书里面</code></pre>
+<pre><code> cd ~/easy-rsa/easyrsa3  #准备导入client到根证书里面</code></pre>
 <pre><code> ./easyrsa3 import-req /root/client/easyrsa3/pki/reqs/client.req client  #导入因为server和根证书在一起生成的所以不需要，如果分开生成和client一样也需要导入</code></pre>
 <p> 签约服务器和客户端证书到根证书上面</p>
 <pre><code> ./easyrsa sign client client</code></pre>

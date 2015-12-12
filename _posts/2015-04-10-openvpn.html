@@ -44,6 +44,6 @@ title: openvpn的安装
 <pre><code>echo 1 >  /proc/sys/net/ipv4/ip_forward</code></pre>
 <pre><code>iptables -t nat -I POSTROUTING -s 10.8.0.0/255.255.255.0 -o eth0 -j MASQUERADE</code></pre>
 
-<p>....</p>
+<p>客户端的话，下载tunnelblick就行了，把配置拖过去</p>
 
 

@@ -2,11 +2,11 @@
 layout: topic 
 title: crontab
 ---
-<p>最近在经常用crontab的定时任务出发功能， 但是总是感觉如果任务没有触发怎么吧，crontab默认会发送邮件到默认用户，root的话是/var/spool/mail/root
+<p>最近在经常用crontab的定时任务出发功能， 但是总是感觉如果任务没有触发怎么办，crontab默认会发送邮件到默认用户，root的话是/var/spool/mail/root
    我们可以不这样，就直接发送邮件到你的邮箱里面，是不是很方便
 </p>
 <pre><code> apt-get intall sendmail</code></pre>
 <p>然后配置crontab  在/etc/crontab 或者crontab -e 增加一行 </p>
-<p><strong>MAILTO=x.x@xx.com </strong> 发到某个邮箱 </p>
+<p><strong>MAILTO=x.x@xx.com </strong> 发到某个邮箱 如果MAILTO为空的话，不发送</p>
 <p><strong>tail -f /var/log/syslog  </strong>  任务执行了会产生一些log，或者查看你的邮箱</p>
 

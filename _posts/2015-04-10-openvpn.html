@@ -32,10 +32,10 @@ title: openvpn的安装
 <p> 下面创建客户端的证书</p>
 <pre><code> cd && mkdir client</code></pre>
 <pre><code> cp easy-rsa/easyrsa3 client/</code></pre>
-<pre><code>cd client/easyrsa3/ && ./easyrsa3 init-pki </code></pre>
+<pre><code>cd client/easyrsa3/ && ./easyrsa init-pki </code></pre>
 <pre><code>./easyrsa gen-req client  #创建client req</code></pre>
 <pre><code> cd ~/easy-rsa/easyrsa3  #准备导入client到根证书里面</code></pre>
-<pre><code> ./easyrsa3 import-req /root/client/easyrsa3/pki/reqs/client.req client  #导入因为server和根证书在一起生成的所以不需要，如果分开生成和client一样也需要导入</code></pre>
+<pre><code> ./easyrsa import-req /root/client/easyrsa3/pki/reqs/client.req client  #导入因为server和根证书在一起生成的所以不需要，如果分开生成和client一样也需要导入</code></pre>
 <p> 签约服务器和客户端证书到根证书上面</p>
 <pre><code> ./easyrsa sign client client</code></pre>
 <pre><code> ./easyrsa sign server server</code></pre>
@@ -43,6 +43,12 @@ title: openvpn的安装
 <p>最后可以写一个nat代码了,别忘了提前开启ip forward功能</p>
 <pre><code>echo 1 >  /proc/sys/net/ipv4/ip_forward</code></pre>
 <pre><code>iptables -t nat -I POSTROUTING -s 10.8.0.0/255.255.255.0 -o eth0 -j MASQUERADE</code></pre>
+<p>如果想revoke／删除一个key文件</p>
+<pre><code> ./easyrsa revoke client</code></pre>
+<pre><code> ./easyrsa gen-crl</code></pre>
+<pre><code> cp crl.pem /etc/openvpn/key/</code></pre>
+<pre><code> echo "crl-verify /etc/openvpn/key/crl.pem" > /etc/openvpn/server.conf</code></pre>
+<p>重启openvpn</p>
 
 <p>客户端的话，下载tunnelblick就行了，把配置拖过去</p>
 
